@@ -11,7 +11,7 @@ const autocomplete = async (req, res) => {
   try {
     spotify.setAccessToken(process.env.SPOTIFY_TOKEN);
     const data = await spotify.searchArtists(artist);
-    const suggestions = formatter(data);
+    const suggestions = formatter(data, artist);
     return res.status(200).json(suggestions);
   } catch (err) {
     console.log(err);
